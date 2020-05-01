@@ -1,0 +1,12 @@
+FROM checkio/mission_base
+MAINTAINER Igor Lubimov <igor@checkio.org>
+
+COPY envs /opt/mission/envs
+COPY src /opt/mission/src
+COPY requirements.txt /opt/mission/requirements.txt
+
+RUN pip3 install -r /opt/mission/requirements.txt
+
+{{env_instructions}}
+
+ENTRYPOINT ["python3", "-u", "/opt/mission/src/main.py"]
